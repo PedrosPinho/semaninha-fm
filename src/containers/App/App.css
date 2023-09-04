@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #434343;
+  background-color: #b9b8b8;
   min-height: 100vh;
 }
 
@@ -17,7 +17,6 @@
 
 .App-container {
   min-height: 75vh;
-  padding-top: 5vh;
 }
 
 .App-footer {
@@ -26,7 +25,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(9px + 1vmin);
-  color: white;
+  color: black;
   min-height: 5vh;
   position: fixed;
   left: 0;

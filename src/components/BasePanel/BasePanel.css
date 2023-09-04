@@ -1,3 +1,70 @@
 .BasePanel {
   text-align: center;
+  height: 600px;
+  width: 336px;
+  background: #434343;
+  color: white;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.section {
+  width: 45%;
+  height: 45%;
+}
+.bottom {
+  margin-top: 88px;
+
+}
+.top {
+  width: 110px;
+  height: 110px;
+  background: #000;
+  margin: auto;
+}
+.profile {
+  border-radius: 50%;
+}
+.secondaryInfo {
+  display: block;
+  margin: 12px 0;
+  font-weight: bold;
+}
+
+.artist {
+  margin: 0;
+  margin-left: 23px;
+  text-align: start;
+  word-wrap: break-word;
+  width: 149px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.redOutline {
+	text-shadow: #ff0000 -1px 1.5px 0px;
+}
+
+h4 {
+  margin-top: 0;
+  margin-left: 10px;
+  text-align: start;
+}
+
+p {
+  margin: 10px;
+  margin-bottom: 0;
+  text-align: start;
+  word-wrap: break-word;
+  width: 149px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
 }

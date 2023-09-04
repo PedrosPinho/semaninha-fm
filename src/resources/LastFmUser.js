@@ -27,6 +27,12 @@ const LastFmUser = {
       `${path}getWeeklyAlbumChart&user=${user}&api_key=${API_KEY}&format=json`,
       { method: "GET" }
     )
+  },
+  getInfo(user) {
+    return Api.request(
+      `${path}getInfo&user=${user}&api_key=${API_KEY}&format=json`,
+      { method: "GET" }
+    )
   }
 }
 

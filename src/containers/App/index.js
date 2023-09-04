@@ -1,22 +1,34 @@
 import { useState, useCallback } from "react";
 import LastFmUser from "../../resources/LastFmUser";
-import { processTop5 } from "../../utils/process_data";
+import LastFmAlbum from "../../resources/LastFmAlbum";
+import { processTop5, getReportDate, getReportScrobbles } from "../../utils/process_data";
 import UserPanels from "../UserPanels";
 import "./App.css";
 
 function App() {
   const [user, setUser] = useState("opedropinho");
+  const [userFixed, setUserFixed] = useState("opedropinho");
   const [loading, setLoading] = useState(false);
+  const [top, setTop] = useState();
 
   const getInfo = useCallback(async () => {
     setLoading(true);
     const artists = await LastFmUser.getWeeklyArtistChart(user);
     const albums = await LastFmUser.getWeeklyAlbumChart(user);
     const tracks = await LastFmUser.getWeeklyTrackChart(user);
+        
+    const userInfo = await LastFmUser.getInfo(user);
+    
+    const top5 = processTop5(artists, albums, tracks, userInfo);
+    
+    const topAlbumInfo = await LastFmAlbum.getInfo(top5.albums[0].name, top5.albums[0].artist["#text"], top5.albums[0].mbid)
+    top5.albums[0].img_url = topAlbumInfo.album.image[2]["#text"]
 
-    const top5 = processTop5(artists, albums, tracks);
-
-    console.log(top5);
+    top5.date = getReportDate()
+    top5.scrobbles = getReportScrobbles(tracks.weeklytrackchart.track)
+    
+    setTop(top5);
+    setUserFixed(user);
     setLoading(false);
   }, [user]);
 
@@ -27,16 +39,15 @@ function App() {
       </header>
       <div className="App-container">
         <h3>
-          Lorem ipsum lalallla Lorem ipsum lalallla Lorem ipsum lalallla
-          <br /> Lorem ipsum lalallla Lorem ipsum lalallla Lorem ipsum lalallla
+          Gere uma imagem referente ao relatório sua semana no last.fm
         </h3>
         <input
-          placeholder="Nome de usuário"
+          placeholder="Nome de usuário no last.fm"
           value={user}
           onChange={e => setUser(e.currentTarget.value)}
         />
         <button onClick={() => getInfo()}>Gerar</button>
-        <UserPanels loading={loading} />
+        {top && <UserPanels loading={loading} top5={top} user={userFixed} />}
       </div>
       <footer className="App-footer">Copyright © Pedro Pinho 2023</footer>
     </div>
