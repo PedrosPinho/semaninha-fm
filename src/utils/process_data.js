@@ -3,7 +3,7 @@ export const processTop5 = (artists, albums, tracks, userInfo) => {
     artists: artists.weeklyartistchart.artist.slice(0, 5),
     albums: albums.weeklyalbumchart.album.slice(0, 5),
     tracks: tracks.weeklytrackchart.track.slice(0, 5),
-    user_img: userInfo.user.image[2]["#text"]
+    user_img: userInfo.user.image[3]["#text"]
   };
   return top5;
 };
