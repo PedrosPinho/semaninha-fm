@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 .section {
   width: 45%;
@@ -16,7 +17,6 @@
 }
 .bottom {
   margin-top: 88px;
-
 }
 .top {
   width: 110px;
@@ -48,7 +48,14 @@
 }
 
 .redOutline {
-	text-shadow: #ff0000 -1px 1.5px 0px;
+  text-shadow: #ff0000 -1px 1.5px 0px;
+}
+
+.foot {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  font-size: 12px;
 }
 
 h4 {
@@ -68,3 +75,4 @@ p {
   white-space: nowrap;
   font-size: 12px;
 }
+

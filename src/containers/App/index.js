@@ -8,6 +8,7 @@ import {
 } from "../../utils/process_data";
 import UserPanels from "../UserPanels";
 import "./App.css";
+import { event } from "../../utils/firebase"
 
 function App() {
   const [user, setUser] = useState("");
@@ -29,7 +30,7 @@ function App() {
       top5.albums[0].artist["#text"],
       top5.albums[0].mbid
     );
-    top5.albums[0].img_url = topAlbumInfo.album.image[2]["#text"];
+    top5.albums[0].img_url = topAlbumInfo.album.image[3]["#text"];
 
     top5.date = getReportDate();
     top5.scrobbles = getReportScrobbles(tracks.weeklytrackchart.track);
@@ -39,13 +40,26 @@ function App() {
     setLoading(false);
   }, [user]);
 
+  const clearTopBeforeGet = () => {
+    setLoading(true);
+
+    if (top)
+      setTop(null);
+    if (userFixed)
+      setUserFixed("");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>semaninha.fm</h1>
+        <div className="logo">
+          <a href="/"> semaninha.fm</a>
+        </div>
       </header>
       <div className="App-container">
-        <h3>Gere uma imagem referente ao relatório sua semana no last.fm</h3>
+        <h3 className="App-text">
+          Gerador de relatório semanal do last.fm
+        </h3>
         <input
           placeholder="Nome de usuário no last.fm"
           value={user}
@@ -53,15 +67,18 @@ function App() {
         />
         <button
           onClick={() => {
-            getInfo();
-            setLoading(true);
+            if (user !== userFixed) {
+              event('generateReport', { "username": user })
+              clearTopBeforeGet();
+              getInfo();
+            }
           }}
         >
-          Gerar
+          {loading ? "Gerando" : "Gerar"}
         </button>
+        {loading && !top && <h3>Buscando as informações, peraaii...</h3>}
         {top && <UserPanels loading={loading} top5={top} user={userFixed} />}
       </div>
-      {/* <footer className="App-footer">Copyright © Pedro Pinho 2023</footer> */}
     </div>
   );
 }
