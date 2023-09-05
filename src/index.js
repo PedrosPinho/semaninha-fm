@@ -4,6 +4,9 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import routes from "./routes";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { event } from "./utils/firebase"
+
+event("render")
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

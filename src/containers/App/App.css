@@ -125,6 +125,8 @@ button {
 @media (max-width: 600px) {
   input {
     width: 308px;
+    margin-left: 0;
+    margin-right: 0;
   }
   button {
     width: 336px;

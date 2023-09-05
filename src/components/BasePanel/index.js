@@ -33,7 +33,7 @@ function BasePanel({ loading, top5, user }) {
       scale: 5
     }).then(canvas => {
       const link = document.createElement("a");
-      link.download = `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}-wrapped.png`;
+      link.download = `${user}-semaninha.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
