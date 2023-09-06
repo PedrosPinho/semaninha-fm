@@ -31,7 +31,7 @@
 }
 
 .App-container {
-  min-height: 75vh;
+  min-height: 85vh;
   padding: 0 35px;
 }
 
@@ -40,10 +40,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(9px + 1vmin);
+  font-size: calc(5px + 1vmin);
   color: black;
   min-height: 5vh;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;

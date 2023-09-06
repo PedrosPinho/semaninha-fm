@@ -2,7 +2,7 @@
   text-align: center;
   height: 600px;
   width: 336px;
-  background: #434343;
+  background: #111;
   color: white;
   margin: auto;
   display: flex;
@@ -16,7 +16,7 @@
   height: 45%;
 }
 .bottom {
-  margin-top: 88px;
+  margin-top: 95px;
 }
 .top {
   width: 110px;
