@@ -9,22 +9,17 @@ export const processTop5 = (artists, albums, tracks, userInfo) => {
 };
 
 export const getReportDate = () => {
-  let currentDateObj = new Date();
-  let currentDate2 = new Date();
-  currentDateObj.setDate(
-    currentDateObj.getDate() - ((currentDateObj.getDay() + 2) % 7)
-  );
-  currentDate2.setDate(
-    currentDate2.getDate() - ((currentDate2.getDay() + 2) % 7)
-  );
-  currentDate2.setDate(currentDate2.getDate() - 7);
-  return `${currentDate2
+  let yesterday = new Date();
+  let lastWeek = new Date();
+  yesterday.setDate(yesterday.getDate() - 1)
+  lastWeek.setDate(lastWeek.getDate() - 8)
+  return `${lastWeek
     .toDateString()
-    .slice(4, 10)} - ${currentDateObj.toDateString().slice(4, 10)}`;
+    .slice(4, 10)} - ${yesterday.toDateString().slice(4, 10)}`;
 };
 
 export const getReportScrobbles = tracks => {
   let count = 0;
   tracks.forEach(t => (count += parseInt(t.playcount)));
-  return count
+  return count;
 };

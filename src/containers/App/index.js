@@ -79,6 +79,7 @@ function App() {
         {loading && !top && <h3>Buscando as informações, peraaii...</h3>}
         {top && <UserPanels loading={loading} top5={top} user={userFixed} />}
       </div>
+      <footer className="App-footer">Github <a style={{ marginLeft: "5px", color: "#005399", textDecoration: "none"}} href="https://github.com/PedrosPinho/semaninha-fm">pedrospinho/semaninha-fm</a></footer>
     </div>
   );
 }

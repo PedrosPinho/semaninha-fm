@@ -37,10 +37,9 @@
 
 .App-footer {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(5px + 1vmin);
+  font-size: calc(9px + 1vmin);
   color: black;
   min-height: 5vh;
   left: 0;
